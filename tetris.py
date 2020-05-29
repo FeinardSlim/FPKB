@@ -9,7 +9,7 @@ CELL_SIZE =	20
 COLS = 11
 ROWS = 19
 MAX_FPS = 60
-DROP_TIME = 20
+DROP_TIME = 150
 DRAW = True
 
 COLORS = [
@@ -95,22 +95,22 @@ class TetrisApp(object):
 		self.next_stone = Tetris_shape[randrange(len(Tetris_shape))]
 
 		#initStartPage
-		done = False
-		self.fontMain = pygame.font.SysFont("Comic Sans MS",20)
-		text = self.fontMain.render("Welcome to tetris", True, (255, 255, 255))
-		startParam  = self.fontMain.render("Press anyting to start",True,(255,255,255))
-		clock = pygame.time.Clock()
-		while not done:
-			for event in pygame.event.get():
-				if event.type == pygame.QUIT:
-					done = False
-				if event.type == pygame.KEYDOWN:
-					done = True
-				self.screen.fill((0, 0, 0))
-				self.screen.blit(text,(self.width // 3 + 15,self.height // 2 - 20))
-				self.screen.blit(startParam,(self.width // 3 + 15,self.height //2 + 10))
-				pygame.display.flip()
-				clock.tick(60)
+		# done = False
+		# self.fontMain = pygame.font.SysFont("Comic Sans MS",20)
+		# text = self.fontMain.render("Welcome to tetris", True, (255, 255, 255))
+		# startParam  = self.fontMain.render("Press anyting to start",True,(255,255,255))
+		# clock = pygame.time.Clock()
+		# while not done:
+		# 	for event in pygame.event.get():
+		# 		if event.type == pygame.QUIT:
+		# 			done = False
+		# 		if event.type == pygame.KEYDOWN:
+		# 			done = True
+		# 		self.screen.fill((0, 0, 0))
+		# 		self.screen.blit(text,(self.width // 3 + 15,self.height // 2 - 20))
+		# 		self.screen.blit(startParam,(self.width // 3 + 15,self.height //2 + 10))
+		# 		pygame.display.flip()
+		# 		clock.tick(60)
 
 		self.gameover = False
 		self.runner = runner
@@ -262,7 +262,7 @@ class TetrisApp(object):
 					pygame.draw.line(self.screen, (255,255,255),(self.rlim+1, 0), (self.rlim+1, self.height))
 					self.message("Next:", (self.rlim+CELL_SIZE, 2))
 					self.message("Score: %d" % self.score, (self.rlim+CELL_SIZE, CELL_SIZE*5))
-					self.message("Left Right for movement\n\nUP for rotate\n\nDown for faster drop\n\nQ for AI and instant play\n\nP for Pause\n\nSpace for reset",
+					self.message("Left Right for movement\n\nUP for rotate\n\nDown for faster drop\n\nP for Pause\n\nSpace for reset",
 						(self.rlim+CELL_SIZE+20,CELL_SIZE*7))
 					if self.ai and self.runner:
 						chromosome = self.runner.population[self.runner.current_chromosome]

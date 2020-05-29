@@ -128,6 +128,6 @@ class GeneticAlgorithms(object):
 	def randChromosome(self):
 		return Chromosome({rand: randrange(-1000, 1000) for rand, weight in self.ai.heuristics.items()})
 
-if __name__ == "__main__":	
+if __name__ == "__main__":
 	GeneticAlgorithms().run()
 	
